@@ -1,0 +1,37 @@
+<h1>Come Devour it!!!</h1>
+
+<h2>Eat-Da-Burger!</h2>
+<img class="mx-auto d-block" src="/assets/img/burger.jpg" width="200px" height="150px"/> 
+<link rel="stylesheet" type="text/css" href="/assets/css/burger_style.css">
+
+<div class="row">
+    <div class="col-6">
+        <ul class="list-group">
+            {{#each burgers}}
+            {{#unless devoured}}
+            <li class="list-group-item">{{burger_name}} <a class="float-right btn btn-primary" href="burgers/update/{{id}}">Devour</a></li>
+            {{/unless}}  
+            {{/each}}
+        </ul>
+    </div>
+
+    <div class="col-6">
+        <ul class="list-group">
+            {{#each burgers}} 
+            {{#if devoured}}
+            <li class="list-group-item">{{burger_name}} <a class="float-right btn btn-danger" href="burgers/delete/{{id}}">Delete</a></li>
+            {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+   
+
+</div>
+
+<div class="text-center">
+<form method="post" action="/">
+    <textarea placeholder="enter your favorite burger" name="burgerName" id="burger" required> </textarea> 
+    <br>
+    <button>Submit</button>
+</form> 
+</div>
