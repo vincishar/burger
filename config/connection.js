@@ -1,13 +1,18 @@
 const mysql = require('mysql');
+var connection;
 
-const con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: 'burgers_db'
-});
+if (process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL); 
+} else {  
+    connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'hacktheplanet',
+    database: 'todoagain_db'
+}); 
+};  
 
-con.connect(err => {
+connection.connect(err => {
     if (err) {
         console.log('error connecting to the database', err)
     } else {
@@ -15,5 +20,5 @@ con.connect(err => {
     }
 });
 
-module.exports = con;
+module.exports = connection;
 
